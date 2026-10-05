@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+@theme {
+  --color-arena: #0b0b0f;
+  --color-panel: #15151c;
+  --color-panel-2: #1d1d27;
+  --color-line: #2c2c3a;
+  --color-ink: #f2f0e9;
+  --color-dim: #a3a1b0;
+  --color-neural: #ff2e63;
+  --color-forge: #ffd400;
+  --color-cyan: #00e5ff;
+  --font-display: var(--font-anton), Impact, sans-serif;
+  --font-ui: var(--font-chakra), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-arena);
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-forge);
+  color: var(--color-arena);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-forge);
+  outline-offset: 3px;
+}
+
+/* ---------- Surfaces ---------- */
+.arena-grid {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.hazard {
+  background: repeating-linear-gradient(-45deg, var(--stripe, var(--color-forge)) 0 14px, var(--color-arena) 14px 28px);
+}
+
+/* ---------- Angled panels ---------- */
+.cut {
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+}
+.cut-sm {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.skew-tag {
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+}
+
+/* Bordered cut panel: outer layer is the border colour, inner is the fill */
+.cut-frame {
+  position: relative;
+  padding: 2px;
+  background: var(--frame, var(--color-line));
+}
+.cut-frame > .cut-inner {
+  background: var(--color-panel);
+  height: 100%;
+}
+
+/* ---------- Marquee ---------- */
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+.live-dot {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% { opacity: 0.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .live-dot { animation: none; }
+}
+
+/* ---------- Texture & depth ---------- */
+.halftone {
+  background-image: radial-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+.halftone-dark {
+  background-image: radial-gradient(rgb(0 0 0 / 0.14) 1.2px, transparent 1.7px);
+  background-size: 12px 12px;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgb(255 255 255 / 0.09);
+}
+.outline-text-dark {
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(11 11 15 / 0.18);
+}
+
+/* Cursor spotlight: any element with .spot gets a glow at --mx/--my */
+.spot {
+  position: relative;
+}
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / 0.07), transparent 60%);
+}
+.spot:hover::before {
+  opacity: 1;
+}
+
+/* Slanted full-bleed slab */
+.slab {
+  clip-path: polygon(0 3vw, 100% 0, 100% calc(100% - 3vw), 0 100%);
+}
+
+.marquee {
+  animation: ticker 120s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}
+
+/* ---------- Sleek interactions ---------- */
+/* Underline that slides in from the left */
+.link-slide {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+}
+.link-slide:hover,
+.link-slide:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Button whose fill wipes in from the left on hover */
+.btn-wipe {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-wipe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--wipe, var(--color-ink));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-wipe:hover::before,
+.btn-wipe:focus-visible::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-slide,
+  .btn-wipe,
+  .btn-wipe::before { transition: none; }
+}
+
+/* ---------- Ambient background ---------- */
+@keyframes drift {
+  50% { transform: translate(-4vw, 6vh) scale(1.08); }
+}
+.ambient-drift { animation: drift 26s ease-in-out infinite; }
+.ambient-drift-alt { animation: drift 32s ease-in-out infinite reverse; }
+
+/* Dark angled band, the quiet counterpart to the yellow slab */
+.band {
+  clip-path: polygon(0 0, 100% 3vw, 100% 100%, 0 calc(100% - 3vw));
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 40%),
+    rgb(21 21 28 / 0.72);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-drift,
+  .ambient-drift-alt { animation: none; }
+}
