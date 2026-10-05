@@ -8,7 +8,7 @@ const chakra = Chakra_Petch({ subsets: ["latin"], weight: ["400", "500", "600", 
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio-eight-rosy-ujv4gja4nw.vercel.app"),
+  metadataBase: new URL("https://mayank-pillai.vercel.app"),
   title: "Mayank Pillai | AI Engineer",
   description:
     "Mayank Pillai, AI engineer and full-stack developer. LLM systems, Text-to-SQL, RAG and deployed Next.js products.",
