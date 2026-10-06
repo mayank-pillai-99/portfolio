@@ -1,0 +1,175 @@
+%-------------------------
+% Resume in LaTeX
+% Author: Mayank Pillai
+% License: MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{geometry}
+
+% Page geometry
+\geometry{letterpaper, margin=0.5in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Mayank Pillai} \\ \vspace{4pt}
+    \small \href{https://mayank-pillai.vercel.app}{\underline{mayank-pillai.vercel.app}} $|$
+    \href{mailto:mayank.pillai2024@nst.rishihood.edu.in}{\underline{mayank.pillai2024@nst.rishihood.edu.in}} $|$ \\
+    \href{https://www.linkedin.com/in/mayank-pillai-56798a30b/}{\underline{linkedin.com/in/mayank-pillai}} $|$
+    \href{https://github.com/mayank-pillai-99}{\underline{github.com/mayank-pillai-99}} $|$
+    \href{https://leetcode.com/u/nkZEqqcSwd/}{\underline{leetcode.com/nkZEqqcSwd}}
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    Artificial Intelligence undergraduate who builds LLM-powered systems (Text-to-SQL, RAG, LLM evaluation) and deployed full-stack products on Next.js, Node.js and PostgreSQL, with strong algorithmic fundamentals (160+ LeetCode). Seeking AI engineering and full-stack internships.
+    }}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Newton School of Technology, Rishihood University}{Sonipat, Haryana}
+      {Bachelor of Technology in Artificial Intelligence; CGPA: 9.449/10.0}{Aug. 2024 -- May 2028}
+      \resumeItemListStart
+        \resumeItem{Relevant Coursework: Data Structures \& Algorithms, Object-Oriented Programming, Database Management
+            Systems, Web Development, Computer Networks, Machine Learning}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Visiting Summer Research Intern (VISRI)}{May 2026 -- July 2026}
+      {BITS Pilani $|$ \href{https://github.com/mayank-pillai-99/Intent-Driven-Spatial-Search-Engine}{\underline{Intent-Driven Spatial Search Engine}}}{Pilani, Rajasthan}
+      \resumeItemListStart
+        \resumeItem{Built and deployed a fully offline multilingual spatial search system on a single local GPU, converting conversational voice and text into executable PostGIS SQL through an LLM intent router with a 3-layer FAISS/LangChain RAG fallback, served via a Gradio + Folium map interface}
+        \resumeItem{Designed a Hybrid Evaluation Framework pairing AST-based structural scoring (sqlglot, 7 clause-level dimensions) with live-execution precision/recall, addressing known gaps in exact-match Text-to-SQL benchmarks}
+        \resumeItem{Benchmarked 4 open-weight Text-to-SQL models zero-shot; Qwen2.5-Coder-7B reached a 78.0\% pass rate vs. 46.0\% (SQLCoder-8B) and 32.0\% (CodeS-7B), generalizing to an unseen campus map at 71.2\% over 80 queries}
+        \resumeItem{Curated 186 benchmark queries spanning 5 difficulty tiers and 5 Indian languages, using them to select SeamlessM4T v2 (0.470 WER) over Whisper-Large (0.632) for fully offline speech-to-English}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/mayank-pillai-99/codebase-copilot}{\underline{Codebase Copilot}}} $|$ \emph{TypeScript, Next.js, Fastify, PostgreSQL (pgvector), Redis, BullMQ, tree-sitter}}{Sep. 2026}
+          \resumeItemListStart
+            \resumeItem{Built a full-stack tool that ingests any TypeScript/JavaScript GitHub repository and parses it with tree-sitter into a code graph of symbols, imports, calls, and HTTP routes, powering an architecture map, request tracing, and change-impact analysis}
+            \resumeItem{Implemented hybrid retrieval fusing pgvector (HNSW) semantic search with Postgres full-text search via Reciprocal Rank Fusion and one-hop call-graph expansion, streaming answers over SSE with server-validated file/line citations}
+            \resumeItem{Architected a Next.js + Fastify monorepo with a BullMQ/Redis indexing worker and httpOnly-cookie JWT auth, covered by unit, integration, and Playwright tests in GitHub Actions CI and deployed on Vercel and Render}
+          \resumeItemListEnd
+
+      % TODO: adjust the Hitbox date if you want it to show the recent rework
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/mayank-pillai-99/Hitbox}{\underline{Hitbox}}} $|$ \emph{Next.js, React, Express.js, MongoDB, zod, Vitest, GitHub Actions}}{Dec. 2025}
+          \resumeItemListStart
+            \resumeItem{Built a full-stack social platform for gamers to track, review, and curate lists from IGDB's 500K+ game catalogue, with follows, an activity feed, and comment threads, deployed on Vercel and Render}
+            \resumeItem{Designed explainable recommendation, backlog-ranking, and taste-match engines as pure, testable scoring functions using genre affinity, member ratings, and IGDB time-to-beat data}
+            \resumeItem{Hardened the Express API with zod validation, JWT/bcrypt auth, rate limiting, and helmet headers, backed by 200+ Vitest/Supertest tests in CI and an axe audit with zero WCAG 2.1 AA violations}
+          \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{BookConnect} $|$ \emph{MongoDB, Express.js, React.js, Node.js, Redux Toolkit, Socket.io, Tailwind CSS}}{Oct. 2025}
+          \resumeItemListStart
+            \resumeItem{Engineered real-time social networking platform with instant messaging using Socket.io WebSocket connections and event-driven architecture}
+            \resumeItem{Managed global state with Redux Toolkit and built a user discovery feed backed by MongoDB compound indexes and query optimization}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, JavaScript, TypeScript, SQL, HTML, CSS} \\
+     \textbf{AI/ML}{: PyTorch, Hugging Face Transformers, LangChain, FAISS, Gradio; LLM Evaluation, Text-to-SQL, RAG, ASR} \\
+     \textbf{Frontend}{: React.js, Next.js, Tailwind CSS, Redux Toolkit, Context API, React Flow} \\
+     \textbf{Backend}{: Node.js, Express.js, Fastify, Socket.io, BullMQ, Prisma ORM, zod, RESTful APIs, JWT Authentication} \\
+     \textbf{Databases}{: PostgreSQL (pgvector, PostGIS), MongoDB, Redis, MySQL} \\
+     \textbf{Tools \& Platforms}{: Git, GitHub Actions, Docker, Vitest, Playwright, Vercel, Render, Postman} \\
+     \textbf{Problem Solving}{: 160+ LeetCode problems solved (Arrays, Trees, Dynamic Programming, Graph Theory)}
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}
