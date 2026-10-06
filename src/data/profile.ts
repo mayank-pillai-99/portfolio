@@ -33,8 +33,8 @@ export const profile = {
   links: {
     email: "mayank.pillai2024@nst.rishihood.edu.in",
     github: "https://github.com/mayank-pillai-99",
-    linkedin: "https://linkedin.com/in/mayank-pillai",
-    leetcode: "https://leetcode.com/nkZEqqcSwd",
+    linkedin: "https://www.linkedin.com/in/mayank-pillai-56798a30b/",
+    leetcode: "https://leetcode.com/u/nkZEqqcSwd/",
   },
   proof: [
     { value: "9.45", label: "CGPA" },
@@ -98,9 +98,9 @@ export const projects: Project[] = [
   {
     name: "Codebase Copilot",
     images: [
-      { src: "/projects/copilot-landing.jpg", alt: "Codebase Copilot landing page", fit: "contain" },
-      { src: "/projects/copilot-chat.jpg", alt: "Chat answer with file and line citations" },
-      { src: "/projects/copilot-architecture-map.jpg", alt: "Architecture map of an Express API" },
+      { src: "/projects/copilot-landing.webp", alt: "Codebase Copilot landing page", fit: "contain" },
+      { src: "/projects/copilot-chat.webp", alt: "Chat answer with file and line citations" },
+      { src: "/projects/copilot-architecture-map.webp", alt: "Architecture map of an Express API" },
     ],
     area: "forge",
     date: "Sep 2026",
@@ -117,9 +117,9 @@ export const projects: Project[] = [
   {
     name: "Hitbox",
     images: [
-      { src: "/projects/hitbox-home.jpg", alt: "Hitbox home page" },
-      { src: "/projects/hitbox-backlog.jpg", alt: "Backlog planner ranked by taste and time to beat" },
-      { src: "/projects/hitbox-game.jpg", alt: "Game detail page" },
+      { src: "/projects/hitbox-home.webp", alt: "Hitbox home page" },
+      { src: "/projects/hitbox-backlog.webp", alt: "Backlog planner ranked by taste and time to beat" },
+      { src: "/projects/hitbox-game.webp", alt: "Game detail page" },
     ],
     area: "forge",
     date: "Dec 2025",
@@ -136,7 +136,7 @@ export const projects: Project[] = [
   {
     name: "BookConnect",
     images: [
-      { src: "/projects/bookconnect.jpg", alt: "BookConnect landing page" },
+      { src: "/projects/bookconnect.webp", alt: "BookConnect landing page" },
     ],
     area: "forge",
     date: "Oct 2025",
@@ -152,7 +152,7 @@ export const projects: Project[] = [
   {
     name: "Real-Estate Tracker",
     images: [
-      { src: "/projects/real-estate.jpg", alt: "Realytics property tracker home page" },
+      { src: "/projects/real-estate.webp", alt: "Realytics property tracker home page" },
     ],
     area: "forge",
     impact: "Property search with price and tax history charts.",

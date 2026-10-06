@@ -131,7 +131,7 @@ export default function Hero() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/projects/copilot-chat.jpg"
+                  src="/projects/copilot-chat.webp"
                   alt="Codebase Copilot answering a question with file and line citations"
                   className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover/shot:scale-[1.04]"
                 />
