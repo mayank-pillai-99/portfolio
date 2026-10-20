@@ -9,6 +9,7 @@ export type Area = {
 };
 
 export type Project = {
+  slug: string;
   name: string;
   area: AreaId;
   date?: string;
@@ -36,11 +37,6 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/mayank-pillai-56798a30b/",
     leetcode: "https://leetcode.com/u/nkZEqqcSwd/",
   },
-  proof: [
-    { value: "9.45", label: "CGPA" },
-    { value: "BITS Pilani", label: "Intern '26" },
-    { value: "160+", label: "LeetCode" },
-  ],
 };
 
 export const areas: Area[] = [
@@ -96,6 +92,7 @@ export const experience = {
 
 export const projects: Project[] = [
   {
+    slug: "copilot",
     name: "Codebase Copilot",
     images: [
       { src: "/projects/copilot-landing.webp", alt: "Codebase Copilot landing page", fit: "contain" },
@@ -115,6 +112,7 @@ export const projects: Project[] = [
     repo: "https://github.com/mayank-pillai-99/codebase-copilot",
   },
   {
+    slug: "hitbox",
     name: "Hitbox",
     images: [
       { src: "/projects/hitbox-home.webp", alt: "Hitbox home page" },
@@ -134,6 +132,7 @@ export const projects: Project[] = [
     repo: "https://github.com/mayank-pillai-99/Hitbox",
   },
   {
+    slug: "bookconnect",
     name: "BookConnect",
     images: [
       { src: "/projects/bookconnect.webp", alt: "BookConnect landing page" },
@@ -150,6 +149,7 @@ export const projects: Project[] = [
     repo: "https://github.com/mayank-pillai-99/BookConnect-frontend",
   },
   {
+    slug: "real-estate",
     name: "Real-Estate Tracker",
     images: [
       { src: "/projects/real-estate.webp", alt: "Realytics property tracker home page" },
@@ -166,13 +166,51 @@ export const projects: Project[] = [
   },
 ];
 
-export const skillGroups: { category: string; area: AreaId; items: string[] }[] = [
-  { category: "Languages", area: "arena", items: ["Python", "JavaScript", "TypeScript", "SQL", "HTML", "CSS"] },
-  { category: "AI / ML", area: "neural", items: ["PyTorch", "Transformers", "LangChain", "FAISS", "Gradio", "RAG", "ASR"] },
-  { category: "Frontend", area: "forge", items: ["React", "Next.js", "Tailwind CSS", "Redux Toolkit", "React Flow"] },
-  { category: "Backend", area: "forge", items: ["Node.js", "Express", "Fastify", "Socket.io", "BullMQ", "Prisma", "zod", "JWT"] },
-  { category: "Databases", area: "neural", items: ["PostgreSQL", "pgvector", "PostGIS", "MongoDB", "Redis", "MySQL"] },
-  { category: "Tools", area: "arena", items: ["Git", "GitHub Actions", "Docker", "Vitest", "Playwright", "Vercel", "Render"] },
+// Bento stack tile. `icon` is a Simple Icons export name; omit it when the logo doesn't exist.
+export const stackGroups: { label: string; color: string; items: { name: string; icon?: string }[] }[] = [
+  {
+    label: "AI / ML",
+    color: "var(--color-neural)",
+    items: [
+      { name: "Python", icon: "siPython" },
+      { name: "PyTorch", icon: "siPytorch" },
+      { name: "Hugging Face", icon: "siHuggingface" },
+      { name: "LangChain", icon: "siLangchain" },
+      { name: "FAISS" },
+    ],
+  },
+  {
+    label: "Frontend",
+    color: "var(--color-forge)",
+    items: [
+      { name: "TypeScript", icon: "siTypescript" },
+      { name: "Next.js", icon: "siNextdotjs" },
+      { name: "React", icon: "siReact" },
+      { name: "Tailwind", icon: "siTailwindcss" },
+    ],
+  },
+  {
+    label: "Backend & data",
+    color: "var(--color-cyan)",
+    items: [
+      { name: "Node.js", icon: "siNodedotjs" },
+      { name: "Fastify", icon: "siFastify" },
+      { name: "PostgreSQL", icon: "siPostgresql" },
+      { name: "pgvector" },
+      { name: "MongoDB", icon: "siMongodb" },
+      { name: "Redis", icon: "siRedis" },
+    ],
+  },
+  {
+    label: "Tooling",
+    color: "var(--color-ink)",
+    items: [
+      { name: "Docker", icon: "siDocker" },
+      { name: "GitHub Actions", icon: "siGithubactions" },
+      { name: "Vitest", icon: "siVitest" },
+      { name: "Playwright" },
+    ],
+  },
 ];
 
 export const education = {

@@ -3,12 +3,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-type Props = { index: string; kicker: string; lines: [string, string]; note?: string };
+type Item = { n: string; name: string; href: string };
+type Props = { index: string; kicker: string; lines: [string, string]; items?: Item[] };
 
 const OPEN = "polygon(0% 8%, 100% 0%, 100% 92%, 0% 100%)";
 
-/** A yellow slab that slices open from a thin diagonal as it scrolls into view, with drifting headline text. */
-export default function SliceReveal({ index, kicker, lines, note }: Props) {
+/** A yellow slab that slices open from a thin diagonal as it scrolls into view, with drifting headline text and an index of what follows. */
+export default function SliceReveal({ index, kicker, lines, items = [] }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   // Read after mount so server and client render the same markup
   const [reduce, setReduce] = useState(false);
@@ -26,31 +27,46 @@ export default function SliceReveal({ index, kicker, lines, note }: Props) {
   const fade = useTransform(open, [0.5, 1], [0, 1]);
 
   return (
-    <div ref={ref} className="relative py-6" aria-hidden>
+    <div ref={ref} className="relative py-6">
       <motion.div
-        className="relative flex min-h-[55vh] flex-col sm:min-h-[70vh] justify-center overflow-hidden bg-forge text-arena"
+        className="relative flex min-h-[45vh] flex-col justify-center overflow-hidden bg-forge py-14 text-arena"
         style={{ clipPath: reduce ? OPEN : clipPath }}
       >
-        <div className="halftone-dark absolute inset-0" />
-        <div className="relative mx-auto mb-6 flex w-full max-w-6xl items-center gap-3 px-4 font-mono text-xs font-bold tracking-[0.25em] sm:px-6">
-          <span className="skew-tag bg-arena px-3 py-1 text-forge">{index}</span>
-          {kicker}
-          <span className="h-px flex-1 bg-arena/30" />
+        <div aria-hidden className="halftone-dark absolute inset-0" />
+        <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.35fr_1fr] lg:items-end">
+          <div aria-hidden>
+            <div className="mb-5 flex items-center gap-3 font-mono text-xs font-bold tracking-[0.25em]">
+              <span className="skew-tag bg-arena px-3 py-1 text-forge">{index}</span>
+              {kicker}
+            </div>
+            <div className="whitespace-nowrap font-display text-[22vw] uppercase leading-[0.82] sm:text-[11vw] lg:text-[8.5rem]">
+              <motion.p style={{ x: reduce ? 0 : left }}>{lines[0]}</motion.p>
+              <motion.p className="text-transparent" style={{ x: reduce ? 0 : right, WebkitTextStroke: "2px var(--color-arena)" }}>
+                {lines[1]}
+              </motion.p>
+            </div>
+          </div>
+          {items.length > 0 && (
+            <motion.nav aria-label="Projects on this page" style={{ opacity: reduce ? 1 : fade }}>
+              <ol className="border-t-2 border-arena">
+                {items.map((it) => (
+                  <li key={it.href} className="border-b border-arena/25">
+                    <a
+                      href={it.href}
+                      className="group flex items-baseline gap-4 py-2.5 focus-visible:outline-arena"
+                    >
+                      <span className="font-mono text-xs font-bold">{it.n}</span>
+                      <span className="flex-1 font-display text-2xl uppercase leading-none sm:text-3xl">{it.name}</span>
+                      <span aria-hidden className="font-display text-xl transition-transform duration-300 group-hover:translate-y-1">
+                        ↓
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </motion.nav>
+          )}
         </div>
-        <div className="relative mx-auto w-full max-w-6xl whitespace-nowrap px-4 font-display text-[22vw] uppercase leading-[0.82] sm:px-6 sm:text-[12vw] xl:text-[11rem]">
-          <motion.p style={{ x: reduce ? 0 : left }}>{lines[0]}</motion.p>
-          <motion.p className="text-transparent" style={{ x: reduce ? 0 : right, WebkitTextStroke: "2px var(--color-arena)" }}>
-            {lines[1]}
-          </motion.p>
-        </div>
-        {note && (
-          <motion.p
-            className="relative mx-auto mt-6 w-full max-w-6xl px-4 text-right font-mono text-xs font-bold tracking-[0.25em] sm:px-6"
-            style={{ opacity: reduce ? 1 : fade }}
-          >
-            {note}
-          </motion.p>
-        )}
       </motion.div>
     </div>
   );

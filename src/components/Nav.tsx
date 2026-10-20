@@ -5,9 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import MaskText, { EASE } from "./MaskText";
 
 const items = [
-  { href: "#projects", label: "Projects" },
+  { href: "#projects", label: "Work" },
   { href: "#experience", label: "Experience" },
-  { href: "#toolkit", label: "Toolkit" },
   { href: "#contact", label: "Contact" },
 ];
 

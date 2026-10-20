@@ -2,12 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-// Section id → glow colour. The hero has its own backdrop, so the glow stays off there.
+// Section id → glow colour.
 const tints: Record<string, string | null> = {
-  top: null,
+  top: "var(--color-forge)",
   work: "var(--color-forge)",
   experience: "var(--color-neural)",
-  toolkit: "var(--color-cyan)",
   contact: "var(--color-forge)",
 };
 

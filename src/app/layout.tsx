@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, Chakra_Petch, JetBrains_Mono } from "next/font/google";
 import Providers from "@/components/Providers";
+import { education, experience, profile } from "@/data/profile";
 import "./globals.css";
 
 const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton" });
@@ -18,6 +19,23 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image" },
+  alternates: { canonical: "/" },
+};
+
+// Structured data so search engines can show a proper result for the name
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "AI Engineer and Full-Stack Developer",
+  url: "https://mayank-pillai.vercel.app",
+  email: `mailto:${profile.links.email}`,
+  sameAs: [profile.links.github, profile.links.linkedin, profile.links.leetcode],
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: education.school },
+    { "@type": "CollegeOrUniversity", name: experience.org },
+  ],
+  knowsAbout: ["LLM systems", "Text-to-SQL", "Retrieval-augmented generation", "Next.js", "TypeScript", "Python", "PostgreSQL"],
 };
 
 export const viewport: Viewport = { themeColor: "#0b0b0f" };
@@ -26,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${anton.variable} ${chakra.variable} ${jetbrains.variable}`}>
       <body className="antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -197,3 +197,16 @@ body {
   .ambient-drift,
   .ambient-drift-alt { animation: none; }
 }
+
+/* Now-shipping screenshot timer (its animationend advances the slide) */
+@keyframes fill-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.cycle-bar {
+  transform-origin: left;
+  animation: fill-x 4.2s linear forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cycle-bar { animation: none; }
+}

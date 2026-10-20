@@ -41,7 +41,7 @@ export default function Experience() {
             <div className="cut spot bg-panel p-6">
               <div className="mb-5 flex items-center justify-between">
                 <h4 className="font-display text-2xl uppercase">Model Benchmark</h4>
-                <span className="font-mono text-[11px] tracking-[0.2em] text-dim">ZERO-SHOT PASS RATE</span>
+                <span className="font-mono text-xs tracking-[0.2em] text-dim">ZERO-SHOT PASS RATE</span>
               </div>
               <ol className="space-y-4">
                 {experience.benchmark.map((m, i) => (
@@ -77,8 +77,8 @@ export default function Experience() {
                   <p className="font-display text-4xl text-cyan">
                     <CountUp value={h.value} decimals={h.decimals} suffix={h.suffix} />
                   </p>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-dim">{h.label}</p>
-                  {h.note && <p className="mt-1 font-mono text-[11px] text-dim/80">{h.note}</p>}
+                  <p className="mt-1 font-mono text-xs uppercase tracking-widest text-dim">{h.label}</p>
+                  {h.note && <p className="mt-1 font-mono text-xs text-dim/80">{h.note}</p>}
                 </div>
               </Reveal>
             ))}
