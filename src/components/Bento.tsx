@@ -98,27 +98,31 @@ export default function Bento() {
           {/* Stack */}
           <Tile ready={ready} delay={0.3} className="col-span-2 lg:col-span-8" accent="var(--color-cyan)">
             <h2 className="mb-3 font-mono text-xs tracking-[0.2em] text-dim">STACK</h2>
-            <ul className="flex flex-wrap items-center gap-1.5">
-              {stackGroups.map((g) => [
-                <li key={g.label} className="ml-1 mr-1 flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.15em] first:ml-0">
-                  <span aria-hidden className="h-2 w-2" style={{ background: g.color }} />
-                  {g.label}
-                </li>,
-                ...g.items.map((it) => (
-                  <li key={it.name} className="flex items-center gap-2 border border-line bg-arena/60 px-2.5 py-1 font-mono text-xs text-ink">
-                    <BrandIcon icon={it.icon} name={it.name} />
-                    {it.name}
-                  </li>
-                )),
-              ])}
-            </ul>
+            <div className="space-y-2">
+              {stackGroups.map((g) => (
+                <div key={g.label} className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:gap-3">
+                  <span className="flex shrink-0 items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.15em] sm:w-40 sm:pt-1.5">
+                    <span aria-hidden className="h-2 w-2" style={{ background: g.color }} />
+                    {g.label}
+                  </span>
+                  <ul className="flex flex-wrap gap-1.5" aria-label={g.label}>
+                    {g.items.map((it) => (
+                      <li key={it.name} className="flex items-center gap-2 border border-line bg-arena/60 px-2.5 py-1 font-mono text-xs text-ink">
+                        <BrandIcon icon={it.icon} name={it.name} />
+                        {it.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </Tile>
 
           {/* Contact */}
           <Tile ready={ready} delay={0.36} tone="cyan" className="col-span-2 lg:col-span-4" innerClassName="flex flex-col">
             <span className="font-mono text-xs font-bold tracking-[0.2em] opacity-75">GET IN TOUCH</span>
             <span className="mt-1 font-display text-5xl uppercase leading-none">Let&apos;s talk</span>
-                        <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-3 pt-3">
+            <div className="mt-auto flex flex-wrap items-center gap-x-4 gap-y-3 pt-3">
               <button onClick={copy} className="btn-wipe cut-sm bg-arena px-4 py-2 font-display text-lg uppercase tracking-wide text-cyan [--wipe:var(--color-ink)] hover:text-arena">
                 Copy email
               </button>
